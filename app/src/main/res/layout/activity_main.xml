@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffff00"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
+        android:textSize="25dp"
+        android:textColor="#0000ff"
         android:layout_marginTop="15dp"
         android:text="Welcome my friend!" />
+
 
 </LinearLayout>
