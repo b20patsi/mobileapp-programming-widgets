@@ -1,42 +1,79 @@
+# Rapport för widgets
 
-# Rapport
+## Appview
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Appen är skapad med en linearlayout med en vertical riktning på elementen som vi kan se i koden
+nedan. För varje element som implementeras innanför linearlayout-taggen så skapas det en ny rad.
+Vi ser också i Figur 1 att det finns checkboxar som ligger sidanom varandra trotts att varje nytt element ska
+skapas på en ny rad. Detta är möjligt då det ligger en ny linearlayout inne i den befintliga som
+har en horizontal riktning och då gör att elementen som implementeras i den hamnar till höger om
+det första elementet istället för att hamna under varandra.
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff00"
+    tools:context=".MainActivity">
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+![](appView.png)
+*Figur 1. Appens utseende*
 
-![](android.png)
+Som vi även kan se i Figur 1 så används en textview, checkbox, button och imageview. I koden nedan
+ser vi först en textview vilket innehåller vanlig text som är stylad till att vara i centrum och
+framstå som en rubrik. Sedan har vi en checkbox med tillhörande text som användaren kan kryssa i
+om så önskas. En button är implementerad så det som användaren har markerat i checkboxarna skickas
+då som svar och texten ändras på knappen från Confirm till Confirmed. Hur det ser ut kan vi först
+se i Figur 2 under koden där användaren kryssar i svaren som sedan skickas in i Figur 3 med hjälp
+av knappen. Sist i koden har vi en imageview där en bild är implementerad. Bilden är centrerad
+och ligger sist i linearlayouten som avslutas efter imageviewn då det ej finns fler element som ska
+implementeras.
 
-Läs gärna:
+```
+<TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:textSize="25sp"
+        android:textColor="#0000ff"
+        android:layout_marginTop="15dp"
+        android:text="Welcome my friend!" />
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+<CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:text="Hungry" />
+
+<Button
+        android:id="@+id/button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="25dp"
+        android:background="#ccc"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:textColor="#0000ff"
+        android:textSize="17sp" />
+
+<ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        tools:ignore="VectorDrawableCompat" />
+```
+
+![](checkbox.png)
+*Figur 2. Checkboxar markerade*
+
+![](button.png)
+*Figur 3. Texten på knappen har ändrats*
